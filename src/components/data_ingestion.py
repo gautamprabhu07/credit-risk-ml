@@ -23,6 +23,9 @@ class DataIngestion:
 
     def export_collection_as_dataframe(self, collection_name, db_name) -> pd.DataFrame:
         try:
+            if not MONGO_DB_URL:
+                raise ValueError("MONGO_DB_URL is not set. Please configure it as an environment variable.")
+
             mongo_client = MongoClient(MONGO_DB_URL)
 
             collection = mongo_client[db_name][collection_name]

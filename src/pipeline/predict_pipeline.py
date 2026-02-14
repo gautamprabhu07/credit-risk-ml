@@ -1,15 +1,12 @@
-import shutil
 import os
 import sys
 import pandas as pd
 import numpy as np
-import pickle
-import streamlit as st
 from src.logger import logging
 from src.exception import CustomException
 from src.constant import *
 from src.utils.main_utils import MainUtils
-from src.components. data_transformation import DataTransformation
+from src.components.data_transformation import DataTransformation
 from dataclasses import dataclass
 
 

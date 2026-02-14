@@ -342,3 +342,133 @@ Think of this project as two connected tracks:
 2. **Online inference track**: User input → same feature engineering/preprocessing → load saved model → probability + explanation
 
 That consistency between training and inference preprocessing is what keeps predictions reliable in deployment.
+
+---
+
+## 9) Commands to run the application
+
+Run these commands from the project root folder.
+
+### A. Environment setup (first time)
+
+```bash
+py -3.11 -m venv .venv
+source .venv/Scripts/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+### B. (Optional) Upload dataset to MongoDB
+
+Before this step, set your own MongoDB URI and DB/collection values in `src/constant/__init__.py`.
+
+```bash
+python upload_data.py
+```
+
+### C. Train the model pipeline
+
+```bash
+python src/pipeline/train_pipeline.py
+```
+
+### D. Run the Streamlit application
+
+```bash
+./.venv/Scripts/python -m streamlit run streamlit_app.py --server.port 8501
+```
+
+Then open: `http://localhost:8501`
+
+## Samples
+
+Sample 1 (Low-risk style profile)
+Credit Limit: 300000
+Gender: Female
+Education Level: University
+Marital Status: Single
+Age: 34
+Repayment Status
+
+Pay 0: Paid on-time
+Pay 2: Paid on-time
+Pay 3: Pay duly
+Pay 4: Paid on-time
+Pay 5: Pay duly
+Pay 6: Paid on-time
+Bill Amounts
+
+Bill Amount 1: 45000
+Bill Amount 2: 42000
+Bill Amount 3: 39000
+Bill Amount 4: 36000
+Bill Amount 5: 33000
+Bill Amount 6: 30000
+Payment Amounts
+
+Pay Amount 1: 12000
+Pay Amount 2: 10000
+Pay Amount 3: 9000
+Pay Amount 4: 8000
+Pay Amount 5: 7000
+Pay Amount 6: 6500
+Sample 2 (Medium-risk style profile)
+Credit Limit: 150000
+Gender: Male
+Education Level: Graduate
+Marital Status: Married
+Age: 41
+Repayment Status
+
+Pay 0: Payment delay for 1 month
+Pay 2: Paid on-time
+Pay 3: Payment delay for 1 month
+Pay 4: Paid on-time
+Pay 5: Paid on-time
+Pay 6: Pay duly
+Bill Amounts
+
+Bill Amount 1: 78000
+Bill Amount 2: 72000
+Bill Amount 3: 69000
+Bill Amount 4: 64000
+Bill Amount 5: 60000
+Bill Amount 6: 56000
+Payment Amounts
+
+Pay Amount 1: 4000
+Pay Amount 2: 3500
+Pay Amount 3: 3000
+Pay Amount 4: 3000
+Pay Amount 5: 2500
+Pay Amount 6: 2500
+Sample 3 (High-risk style profile)
+Credit Limit: 60000
+Gender: Male
+Education Level: High School
+Marital Status: Married
+Age: 29
+Repayment Status
+
+Pay 0: Payment delay for 4 months
+Pay 2: Payment delay for 3 months
+Pay 3: Payment delay for 4 months
+Pay 4: Payment delay for 5 months
+Pay 5: Payment delay for 4 months
+Pay 6: Payment delay for 3 months
+Bill Amounts
+
+Bill Amount 1: 58000
+Bill Amount 2: 56000
+Bill Amount 3: 54000
+Bill Amount 4: 52000
+Bill Amount 5: 50000
+Bill Amount 6: 49000
+Payment Amounts
+
+Pay Amount 1: 500
+Pay Amount 2: 500
+Pay Amount 3: 400
+Pay Amount 4: 300
+Pay Amount 5: 300
+Pay Amount 6: 200

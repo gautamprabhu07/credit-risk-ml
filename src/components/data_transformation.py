@@ -7,7 +7,6 @@ from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, OrdinalEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
-from imblearn.over_sampling import SMOTE
 
 
 from src.constant import *
@@ -134,6 +133,8 @@ class DataTransformation:
         logging.info("Entered initiate_data_transformation method of DataTransformation class")
 
         try:
+            from imblearn.over_sampling import SMOTE
+
             dataframe = self.get_data(feature_store_file_path = self.feature_store_file_path)
 
             # correcting missing values

@@ -1,7 +1,6 @@
 import sys
 import os
 import pickle
-import yaml
 
 from src.constant import *
 from src.exception import CustomException
@@ -16,6 +15,8 @@ class MainUtils:
 
     def read_yaml_file(self, file_path: str) -> dict:
         try:
+            import yaml
+
             with open(file_path, 'rb') as yaml_file:
                 return yaml.safe_load(yaml_file)
         

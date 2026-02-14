@@ -1,8 +1,9 @@
-# Credit Card Default Prediction - ([App_Link](https://credit-card--default-prediction.streamlit.app/))
+# Credit Card Default Prediction
 
 A comprehensive machine learning project to predict credit card default payments using various classification algorithms. This project implements an end-to-end pipeline from data ingestion to model deployment using best practices in MLOps.
 
 ## 📋 Table of Contents
+
 - [Project Overview](#project-overview)
 - [Dataset Information](#dataset-information)
 - [Features](#features)
@@ -19,7 +20,9 @@ A comprehensive machine learning project to predict credit card default payments
 In an increasingly dynamic financial landscape, XYZ Financial Services faces the critical challenge of accurately predicting credit risk. This project develops a predictive model that estimates the probability of credit default based on credit card owners' characteristics such as age, gender, education, marital status, credit limit, and payment history.
 
 ### Business Goal
+
 Enable XYZ Financial Services to:
+
 - Identify high-risk credit clients
 - Tailor risk mitigation strategies
 - Adjust credit limits appropriately
@@ -35,6 +38,7 @@ Enable XYZ Financial Services to:
 - **Time Period**: April 2005 to September 2005 (Taiwan)
 
 ### Key Features
+
 - **Demographic**: Age, Gender, Education, Marital Status
 - **Credit Information**: Credit Limit Balance
 - **Repayment Status**: Past 6 months payment status (PAY_0 to PAY_6)
@@ -95,18 +99,21 @@ Credit Card Default Prediction/
 ## 🚀 Installation
 
 1. **Clone the repository**:
+
 ```bash
 git clone https://github.com/vineet416/Credit_Card_Default_Prediction.git
 cd Credit_Card_Default_Prediction
 ```
 
 2. **Create a virtual environment**:
+
 ```bash
 conda create -p venv python==3.12 -y
 conda activate venv/
 ```
 
 3. **Install dependencies and package**:
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -116,15 +123,17 @@ pip install -r requirements.txt
 ### Training the Model
 
 1. **Run the training pipeline**:
+
 ```python
-from src.pipeline.train_pipeline import TrainPipeline
+from src.pipeline.train_pipeline import TrainingPipeline
 
 # Initialize and run training pipeline
-pipeline = TrainPipeline()
+pipeline = TrainingPipeline()
 pipeline.run_pipeline()
 ```
 
 2. **Or run via command line**:
+
 ```bash
 python src/pipeline/train_pipeline.py
 ```
@@ -132,11 +141,13 @@ python src/pipeline/train_pipeline.py
 ### Web Application
 
 Launch the Streamlit web application:
+
 ```bash
-streamlit run streamlit_app.py
+./.venv/Scripts/python -m streamlit run streamlit_app.py
 ```
 
 The web app provides an intuitive interface for:
+
 - Input credit card holder information
 - Real-time default probability prediction
 - Interactive feature input with explanations
@@ -145,21 +156,20 @@ The web app provides an intuitive interface for:
 
 The project evaluates multiple machine learning algorithms:
 
-| Model | ROC AUC | Precision | Recall | F1 Score | Accuracy |
-|-------|---------|-----------|--------|----------|----------|
-| **Random Forest** | 0.777 | 0.57 | 0.483 | 0.523 | 0.805 |
-| **Gradient Boosting** | 0.759 | 0.585 | 0.41 | 0.483 | 0.805 |
-| **XGBoost** | 0.758 | 0.504 | 0.515 | 0.509 | 0.781 |
-| **K-Nearest Neighbors** | 0.693 | 0.375 | 0.521 | 0.436 | 0.702 |
+| Model                   | ROC AUC | Precision | Recall | F1 Score | Accuracy |
+| ----------------------- | ------- | --------- | ------ | -------- | -------- |
+| **Random Forest**       | 0.777   | 0.57      | 0.483  | 0.523    | 0.805    |
+| **Gradient Boosting**   | 0.759   | 0.585     | 0.41   | 0.483    | 0.805    |
+| **XGBoost**             | 0.758   | 0.504     | 0.515  | 0.509    | 0.781    |
+| **K-Nearest Neighbors** | 0.693   | 0.375     | 0.521  | 0.436    | 0.702    |
 
 **Best Model**: Random Forest with the highest ROC AUC score of 0.777 and F1 Score of 0.523.
 
 ### Key Insights:
+
 - Random Forest provides the best balance of precision and recall
 - All models achieve good Areas under the ROC curve around 0.7
 - Feature importance analysis reveals payment history as the most predictive factor
-
-## 🌐 Web Application - ([App_Link](https://credit-card--default-prediction.streamlit.app/))
 
 The Streamlit web application includes:
 
@@ -170,6 +180,7 @@ The Streamlit web application includes:
 - **Responsive Design**: Works on desktop and mobile devices
 
 ### Application Features:
+
 - Basic information input (age, gender, education, marital status)
 - Credit limit and payment history tracking
 - Bill amounts and payment amounts for past 6 months
@@ -186,31 +197,3 @@ The Streamlit web application includes:
 - **Configuration**: PyYAML
 - **Database**: pymongo (MongoDB)
 - **Development**: Jupyter Notebooks
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
-### Development Setup:
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 👤 Author
-
-**Vineet Patel**
-- Email: vineetpatel468@gmail.com
-- GitHub: [@vineet416](https://github.com/vineet416)
-- LinkedIn: [@vineet416](https://www.linkedin.com/in/vineet416/)
-
-## 🙏 Acknowledgments
-
-- UCI Machine Learning Repository for providing the dataset
-- The open-source community for the amazing tools and libraries
-- Streamlit for the web application framework and ease of deployment
-
----
-
-⭐ If you found this project helpful, please give it a star!
