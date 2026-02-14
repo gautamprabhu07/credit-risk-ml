@@ -53,9 +53,27 @@ class PredictionPipeline:
     def predict_proba(self, transformed_x: np.ndarray) -> np.ndarray:
         try:
             model = self.utils.load_object(self.prediction_pipeline_config.model_file_path)
+            model = self._ensure_model_compatibility(model)
             probability = model.predict_proba(transformed_x)
             return probability, model
         
+        except Exception as e:
+            raise CustomException(e, sys)
+
+    @staticmethod
+    def _ensure_model_compatibility(model):
+        try:
+            if not hasattr(model, "monotonic_cst"):
+                model.monotonic_cst = None
+
+            estimators = getattr(model, "estimators_", None)
+            if estimators is not None:
+                for estimator in estimators:
+                    if not hasattr(estimator, "monotonic_cst"):
+                        estimator.monotonic_cst = None
+
+            return model
+
         except Exception as e:
             raise CustomException(e, sys)
         
